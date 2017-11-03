@@ -22,3 +22,5 @@ var Section = {
         ids.findOneAndUpdate({name: 'sections'}, {$inc: {idNumber: 1}}, {new: true}, callback);
     }
 };
+
+module.exports = Section;
