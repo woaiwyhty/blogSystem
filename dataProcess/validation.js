@@ -5,6 +5,6 @@ var valid = {
     register: function(data) {
 
     }
-}
+};
 
 module.exports = valid;
