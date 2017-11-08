@@ -1,0 +1,42 @@
+//
+   Created by Wu on 11/8/2017.
+
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+        script(src='../public/javascripts/jquery-3.2.1.min.js')
+        script(src='../public/javascripts/bootstrap.min.js')
+        link(rel='stylesheet', href='../public/stylesheets/bootstrap.min.css')
+        link(rel='stylesheet', href='../public/stylesheets/style.css')
+        title Sign Up to GeeksUnknown
+    body
+        #register.container
+            form(action='/register', method='post', name='regForm')
+                div(id='register title')
+                    h1 Sign Up to GeeksUnknown
+                table.table.col-sm-12
+                    tr
+                        td
+                            .col-sm-12
+                                input.form-control(type='text', placeholder='Enter User Name', name='username', required='')
+                    tr
+                        td
+                            .col-sm-12
+                                input.form-control(type='password', placeholder='Enter password', name='password', required='')
+                    tr
+                        td
+                            .col-sm-12
+                                input.form-control(type='password', placeholder='Repeat password', name='password_re', required='')
+                    tr
+                        td
+                            .col-sm-12
+                                input.form-control(type='email', placeholder='Enter email address', name='email', required='')
+                    tr
+                        td
+                            .row
+                                .col-sm-6
+                                    button.btn.btn-primary.btn-lg.btn-block(type='submit') Sign Up
+                                .col-sm-6
+                                    button.btn.btn-danger.btn-lg.btn-block(type='button') Cancel
