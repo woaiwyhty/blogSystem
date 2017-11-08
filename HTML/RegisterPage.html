@@ -14,27 +14,52 @@
         <form action="/register" method="post" name="regForm">
             <div id="register title">
                 <h1 >Sign Up to GeeksUnknown</h1>
-                <p > Please sign up here</p>
             </div>
-            <div id="username">
-                <p>User Name</p>
-                <input type="text" placeholder="Enter User Name" name="username" class="form-control" required>
-            </div>
-            <div id="password">
-                <p>Password</p>
-                <input type="password" placeholder="Enter password" name="password" class="form-control" required>
-            </div>
-            <div id="password">
-                <p>Password</p>
-                <input type="password" placeholder="Repeat password" name="password_re" class="form-control" required>
-            </div>
-            <div id="email">
-                <p>Email Address</p>
-                <input type="email" placeholder="Enter email address" name="email" class="form-control" required>
-            <div id="confirmation">
-                <button type="button" class="btn btn-danger">Cancel</button>
-                <button type="submit" class="btn btn-default">Sign Up</button>
-            </div>
+            <table class="table col-sm-12">
+                <tr>
+                    <td>
+                        <div class="col-sm-12">
+                            <input type="text" placeholder="Enter User Name" name="username" class="form-control" required>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="col-sm-12">
+                            <input type="password" placeholder="Enter password" name="password" class="form-control" required>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="col-sm-12">
+                            <input type="password" placeholder="Repeat password" name="password_re" class="form-control" required>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="col-sm-12">
+                            <input type="email" placeholder="Enter email address" name="email" class="form-control" required>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Sign Up</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button type="button" class="btn btn-danger btn-lg btn-block">Cancel</button>
+                            </div>
+                        </div>
+
+                    </td>
+
+                </tr>
+            </table>
+
 
         </form>
 
