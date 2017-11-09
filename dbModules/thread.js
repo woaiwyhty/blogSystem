@@ -13,10 +13,18 @@ var Thread = {
         model.create(info, callback);
     },
     getThreadById: function(id, callback) {
-        model.findOne({ _id: id }, callback);
+        model.findOne({ _id: id }).populate([
+                { path: 'belongUserId', select: 'username idNumber'},
+                { path: 'belongSectionId', select: 'name threadCount'}
+            ]
+            , callback);
     },
     getThreadByIdNumber: function(idNumber, callback) {
-        model.findOne({ idNumber: idNumber }, callback);
+        model.findOne({ idNumber: idNumber }).populate([
+            { path: 'belongUserId', select: 'username idNumber'},
+            { path: 'belongSectionId', select: 'name threadCount'}
+            ]
+        , callback);
     },
     searchByTitle: function(title, callback) {
         model.find({ threadTitle: { $regex: title } }, callback);
