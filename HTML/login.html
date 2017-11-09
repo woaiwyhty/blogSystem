@@ -2,16 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>login form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="../public/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="../public/javascripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../public/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/stylesheets/style.css">
+    <title>Sign in</title>
 </head>
 <body>
-    <div class="title">
-        <h1 align="center"><span>GeeksUnknown Login</span></h1>
-            <form align="center">
-                <p>Username：<input type="text"name="Username"/></p><br />
-                <p>Password：<input type="password"name="Password"/></p><br />
-                <input type="submit" value="Sign in" />  <input type="button" value="Sign up" />
-            </form>
-    </div>
+<div class="container" id="login">
+    <form action="/login" method="post" name="loginForm">
+        <div id="login title">
+            <h1 >Sign in to GeeksUnknown</h1>
+        </div>
+        <table class="table col-sm-12">
+            <tr>
+                <td>
+                    <div class="col-sm-12">
+                        <input type="text" placeholder="Enter User Name" name="username" class="form-control" required>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="col-sm-12">
+                        <input type="password" placeholder="Enter password" name="password" class="form-control" required>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Sign Up</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-danger btn-lg btn-block">Cancel</button>
+                        </div>
+                    </div>
+
+                </td>
+
+            </tr>
+        </table>
+
+
+    </form>
+
+</div>
+
 </body>
 </html>
