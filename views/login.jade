@@ -8,6 +8,7 @@ html(lang='en')
         meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
         script(src='../javascripts/jquery-3.2.1.min.js')
         script(src='../javascripts/bootstrap.min.js')
+        script(src='../javascripts/eventHandlers.js')
         link(rel='stylesheet', href='../stylesheets/bootstrap.min.css')
         link(rel='stylesheet', href='../stylesheets/style.css')
         title Sign in
@@ -29,6 +30,6 @@ html(lang='en')
                         td
                             .row
                                 .col-sm-6
-                                    button.btn.btn-primary.btn-lg.btn-block(type='submit') Sign Up
+                                    button.btn.btn-primary.btn-lg.btn-block(type='submit', id='SignIn') Sign In
                                 .col-sm-6
-                                    button.btn.btn-danger.btn-lg.btn-block(type='button') Cancel
+                                    button.btn.btn-lg.btn-block(type='button', id='SignUp') Sign Up
