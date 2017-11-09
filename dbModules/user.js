@@ -1,7 +1,7 @@
 /**
  * Created by dell on 2017/11/2.
  */
-var dbHandle = require("../dbManipulations/dbHandles");
+var dbHandle = require("../dbManipulations/dbModel");
 var userModel = dbHandle.getModel('users');
 var ids = dbHandle.getModel('ids');
 var User = {
