@@ -24,6 +24,7 @@ router.get('/', function(req, res, next) {
     })
 });
 
+
 function ensureAdministrator(req, res, next) {
     if(req.session.admin) {
         return next();

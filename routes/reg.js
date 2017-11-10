@@ -5,6 +5,14 @@ var express = require('express');
 var router = express.Router();
 var User = require('../dbModules/user');
 var valid = require('../dataProcess/validation');
+function ensureAuthenticatedInLogin(req, res, next) {
+    if(!req.session.user) {
+        return next();
+    }
+    res.redirect('/main');
+}
+
+
 router.get('/', function(req, res, next) {
     res.render('register');
 });
@@ -27,3 +35,5 @@ router.post('/', ensureAuthenticatedInLogin, function(req, res, next) {
         })
     });
 });
+
+module.exports = router;

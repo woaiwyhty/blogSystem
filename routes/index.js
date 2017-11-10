@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../dbModules/user.js');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var User = require('../dbModules/user');
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express' });

@@ -16,7 +16,9 @@ var expressValidator = require('express-validator');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-
+var register = require('./routes/reg');
+var thread = require('./routes/thread');
+var section = require('./routes/section');
 var app = express();
 
 // view engine setup
@@ -27,7 +29,7 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // Handle db models
-//global.db = mongoose.connect("mongodb://127.0.0.1:3101/goodsManagement");
+global.db = mongoose.connect("mongodb://127.0.0.1:27017/blogSystem");
 global.dbHandle = require("./dbManipulations/dbHandles");
 
 
@@ -78,6 +80,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/register', register);
+app.use('/section', section);
+app.use('/thread', thread);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
