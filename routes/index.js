@@ -31,7 +31,7 @@ router.post('/login',
         { failureRedirect: '/', failureFlash: "Invalid username or passport"}),
     function(req, res) {
         req.session.user = req.user || null;
-        res.redirect('/main');
+        res.redirect('/');
     }
 );
 

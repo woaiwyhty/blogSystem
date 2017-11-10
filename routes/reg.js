@@ -26,12 +26,12 @@ router.post('/', ensureAuthenticatedInLogin, function(req, res, next) {
             username: req.body.username,
             password: req.body.password,
             email: req.body.email,
-            birthday: new Date(req.body.birthday),
             idNumber: doc.idNumber
         };
         User.addUser(info, function(err, doc) {
             if(err) return next();
-            res.send({retCode: 0});
+            req.session.user = doc || null;
+            res.redirect('../')
         })
     });
 });
