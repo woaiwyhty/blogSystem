@@ -2,59 +2,80 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Anime</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="../public/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="../public/javascripts/popper.js"></script>
+    <script src="../public/javascripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../public/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/stylesheets/style.css">
+
+    <title>GeeksUnknown</title>
 </head>
 <body>
+<div class="container-fluid">
 
-<div id="title" style="height: 40px">
-    <div style="padding-top: 10px; padding-left: 20px">
-        <h1>GeeksUnknown</h1>
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">GeeksUnknown</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Sign In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Log out</a>
+                </li>
+            </ul>
+        </div>
+
+    </nav>
+
+
+
+</div>
+
+<div class="topic_list container">
+    <div class="row">
+        <h6 class="col-sm-8">
+            <button class="btn btn-info topic_type">
+                [Thread]<span class="label label-info">1</span>
+            </button>
+            <a href="https://cnodejs.org/topic/58eee565a92d341e48cfe7fc" target="_blank" class="topic_title">2017，我们来聊聊 Node.js</a>
+
+        </h6>
+        <h6 class="col-sm-4">
+            <a href="https://cnodejs.org/topic/58eee565a92d341e48cfe7fc" target="_blank" class="author_name">Author's name</a>
+            <p>2017/10/15</p>
+        </h6>
     </div>
-
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
 </div>
-<div id="status" style=" padding-top: 10px;padding-left: 1000px">
-    <table >
-        <tr>
-            <td><a href="user%20profile.html">Admin: Jame007</a></td> <!--place holder-->
-            <td>
-                <button type="submit">Log out</button>
-            </td>
-        </tr>
-    </table>
-</div>
-<div id="section" style="padding-left: 50px; padding-top: 20px;padding-bottom: 20px;">
-    <table>
-        <tr>
-            <a href="AminPage.html"> Main Page | </a>
-        </tr>
-        <tr>
-            <a href="Game.html">| Game |</a>
-        </tr>
-        <tr>
-            <a href="Programming.html">| Programming |</a>
-        </tr>
-        <tr>
-            <a href="Anime.html">| Anime |</a>
-        </tr>
-        <tr>
-            <a href="Contace%20us.html">| Contact Us |</a>
-        </tr>
-    </table>
-</div>
-<div id="threads" style="padding-left: 200px; padding-top: 50px;padding-bottom: 20px;">
-    <table>
-        <tr>
-            <td>
-                <a href="AminPage.html"> Thread</a></br></br>
 
-                <a href="Game.html">Thread</a></br></br>
-
-                <a href="Programming.html">Thread</a></br></br>
-
-                <a href="Anime.html">Thread</a></br></br>
-
-                <a href="Contact%20us.html">Thread</a></br></br>
-            </td>
-        </tr>
-    </table>
-</div>
+</body>
+</html>
