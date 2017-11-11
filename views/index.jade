@@ -1,5 +1,62 @@
-extends layout
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    script(src='../javascripts/jquery-3.2.1.min.js')
+    script(src='../javascripts/popper.js')
+    script(src='../javascripts/bootstrap.min.js')
+    link(rel='stylesheet', href='../stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='../stylesheets/style.css')
+    title GeeksUnknown
+  body
+    .container-fluid
+      nav.navbar.navbar-expand-sm.navbar-dark.fixed-top
+        a.navbar-brand(href='#') GeeksUnknown
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExample03', aria-controls='navbarsExample03', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarsExample03.collapse.navbar-collapse
+          ul.navbar-nav.mr-auto
+            li.nav-item.active
+              a.nav-link(href='#')
+                | Home
+                span.sr-only (current)
+            li.nav-item
+              a.nav-link(href='#') Link
+            li.nav-item
+              a.nav-link.disabled(href='#') Disabled
+          ul.navbar-nav
+            if isLogin == true
+              li.nav-item
+                a.nav-link(href='/logout') Log out
+            else
+              li.nav-item
+                a.nav-link(href='/login') Sign In
+              li.nav-item
+                a.nav-link(href='/register') Sign Up
+    .topic_list.container
+      if topicList != null
+        each topic, i in topicList
+          .row
+            h6.col-sm-8
+              button.btn.btn-info.topic_type
+                | [Thread]
+                span.label.label-info #{i + 1}
+              a.topic_title(href='/thread/tid=#{topic.tid}', target='_blank')  #{topic.title}
+            h6.col-sm-4
+              a.author_name(href='#', target='_blank') #{topic.authorName}
+              p #{topic.date}
 
-block content
-  h1= title
-  p Welcome to #{title}
+      nav(aria-label='Page navigation')
+        ul.pagination
+          li.page-item
+            a.page-link(href='#') Previous
+          li.page-item
+            a.page-link(href='#') 1
+          li.page-item
+            a.page-link(href='#') 2
+          li.page-item
+            a.page-link(href='#') 3
+          li.page-item
+            a.page-link(href='#') Next
