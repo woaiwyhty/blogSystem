@@ -33,12 +33,12 @@ var Thread = {
         ids.findOneAndUpdate({name: 'threads'}, {$inc: {idNumber: 1}}, {new: true}, callback);
     },
     getThreadsBySectionID: function(id, callback) {
-        model.find({ _id: id }).populate(
+        model.find({ belongSectionId: id }).populate(
             [
                 { path: 'belongUserId', select: 'username idNumber'},
                 { path: 'belongSectionId', select: 'name threadCount'}
             ]
-            , callback);
+            ).exec(callback);
     }
 };
 
