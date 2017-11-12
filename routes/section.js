@@ -5,7 +5,8 @@ var express = require('express');
 var router = express.Router();
 var User = require('../dbModules/user');
 var valid = require('../dataProcess/validation');
-var Section = require('../dbModules/sections')
+var Section = require('../dbModules/sections');
+var Thread = require('../dbModules/thread');
 router.get('/', function(req, res, next) {
     // get all sections
     Section.getAllSections(function(err, doc) {
@@ -23,7 +24,28 @@ router.get('/', function(req, res, next) {
         res.send({ retCode: 0, resArr: infoArr });
     })
 });
-
+router.get('/threadList', function(req, res, next) {
+    var secID = req.query.sid || null;
+    if(secID == null) return next();
+    Section.getSectionByIdNumber(secID, function(err, doc) {
+        if(err) return next();
+        Thread.getThreadsBySectionID(doc._id, function(err, doc) {
+            if(err) return next();
+            var info = [];
+            for(var i in doc) {
+                var dt = doc[i].threadDate;
+                var obj = {
+                    title: doc[i].threadTitle,
+                    content: doc[i].threadContent,
+                    threadDate: dt.getYear() + '/' + dt.getMonth() + '/' + dt.getDay(),
+                    authorName: doc[i].belongUserId.username
+                };
+                info.push(obj);
+            }
+            res.send({ retCode: 0, resArr: info });
+        })
+    })
+});
 
 function ensureAdministrator(req, res, next) {
     if(req.session.admin) {
