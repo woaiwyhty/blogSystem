@@ -37,7 +37,7 @@ router.get('/threadList', function(req, res, next) {
                 var obj = {
                     title: doc[i].threadTitle,
                     content: doc[i].threadContent,
-                    threadDate: dt.getYear() + '/' + dt.getMonth() + '/' + dt.getDay(),
+                    threadDate:  dt.getFullYear() + '/' + dt.getMonth() + '/' + dt.getDate(),
                     authorName: doc[i].belongUserId.username
                 };
                 info.push(obj);
