@@ -6,3 +6,22 @@ body {
 a {
   color: #00B7FF;
 }
+
+
+.navbar {
+  margin-bottom: 20px;
+  background-color: #6c757d;
+}
+
+.topic_list {
+  margin-top: 50px;
+}
+.topic_type {
+  font-size: 10px;
+}
+.author_name {
+  color:grey;
+}
+.topic_title {
+  color:black;
+}
