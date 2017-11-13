@@ -94,7 +94,10 @@ function ensureAuthenticatedInLogin(req, res, next) {
 router.get('/login', ensureAuthenticatedInLogin, function(req, res, next) {
     res.render('login', { title: 'Login'});
 });
-
+router.get('/logout', ensureAuthenticated, function(req, res, next) {
+    req.session.user = null;
+    res.redirect('/');
+});
 router.post('/login',
     passport.authenticate('local',
         { failureRedirect: '/', failureFlash: "Invalid username or passport"}),
