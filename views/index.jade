@@ -18,14 +18,14 @@ html(lang='en')
           span.navbar-toggler-icon
         #navbarsExample03.collapse.navbar-collapse
           ul.navbar-nav.mr-auto
-            li.nav-item.active
-              a.nav-link(href='#')
-                | Home
-                span.sr-only (current)
-            li.nav-item
-              a.nav-link(href='#') Link
-            li.nav-item
-              a.nav-link.disabled(href='#') Disabled
+            if sectionList != null
+              each section, i in sectionList
+                if section.id == activePage
+                  li.nav-item.active
+                    a.nav-link(href='/?&sid=#{section.id}', id='#{section.id}') #{section.name}
+                else
+                  li.nav-item
+                    a.nav-link(href='/?&sid=#{section.id}', id='#{section.id}') #{section.name}
           ul.navbar-nav
             if isLogin == true
               li.nav-item

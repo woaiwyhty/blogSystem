@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
         var info = {
             threadTitle: doc.threadTitle,
             threadContent: doc.threadContent,
-            threadDate: doc.threadDate.getYear() + '/' + doc.threadDate.getMonth() + '/' + doc.threadDate.getDay(),
+            threadDate: doc.threadDate.getFullYear() + '/' + doc.threadDate.getMonth() + '/' + doc.threadDate.getDate(),
             userName: doc.userName,
             sectionName: doc.belongSectionId.name,
             sectionId: doc.belongSectionId.idNumber
@@ -41,7 +41,8 @@ router.post('/', ensureAuthenticated, function(req, res, next) {
         threadDate: new Date(),
         belongUserId: null,
         belongSectionId: null,
-        userName: req.session.user.username
+        userName: req.session.user.username,
+        idNumber: null
     };
     Section.getSectionByIdNumber(req.body.sectionID, function(err, doc) {
         if(err) return next();
@@ -49,10 +50,13 @@ router.post('/', ensureAuthenticated, function(req, res, next) {
         User.getUserNameByName(req.session.user.username, function(err, doc) {
             if(err) return next();
             info.belongUserId = doc._id;
-            Thread.addThread(info, function(err, doc) {
-                if(err) return next();
-                res.send({ retCode: 0 });
-            })
+            Thread.idNumberInc(function(err, doc) {
+                info.idNumber = doc.idNumber;
+                Thread.addThread(info, function(err, doc) {
+                    if(err) return next();
+                    res.send({ retCode: 0 });
+                })
+            });
         })
     });
 });
