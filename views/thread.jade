@@ -1,0 +1,48 @@
+//
+   Created by Wu on 11/14/2017.
+
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+        script(src='../public/javascripts/jquery-3.2.1.min.js')
+        script(src='../public/javascripts/popper.js')
+        script(src='../public/javascripts/bootstrap.min.js')
+        link(rel='stylesheet', href='../public/stylesheets/bootstrap.min.css')
+        link(rel='stylesheet', href='../public/stylesheets/style.css')
+        title #{title}
+    body
+        .container-fluid
+            nav.navbar.navbar-expand-sm.navbar-dark.fixed-top
+                a.navbar-brand(href='#') GeeksUnknown
+                button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExample03', aria-controls='navbarsExample03', aria-expanded='false', aria-label='Toggle navigation')
+                    span.navbar-toggler-icon
+                #navbarsExample03.collapse.navbar-collapse
+                    ul.navbar-nav.mr-auto
+                        if sectionList != null
+                            each section, i in sectionList
+                                if section.id == activePage
+                                    li.nav-item.active
+                                        a.nav-link(href='/?&sid=#{section.id}', id='#{section.id}') #{section.name}
+                                else
+                                    li.nav-item
+                                        a.nav-link(href='/?&sid=#{section.id}', id='#{section.id}') #{section.name}
+                    ul.navbar-nav
+                        if isLogin == true
+                            li.nav-item
+                                a.nav-link(href='/logout') Log out
+                        else
+                            li.nav-item
+                                a.nav-link(href='/login') Sign In
+                            li.nav-item
+                                a.nav-link(href='/register') Sign Up
+        #content.container
+            .jumbotron
+                .row.col-sm-12
+                    h2.topic_full_title #{thread.title}
+                .row.col-sm-12
+                    span.author_full_info #{thread.author}   #{thread.date}
+                hr
+                p.lead #{thread.content}
