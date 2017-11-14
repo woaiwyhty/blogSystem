@@ -25,3 +25,18 @@ a {
 .topic_title {
   color:black;
 }
+.topic_full_title {
+  margin: 0 auto;
+}
+.header {
+  margin-top: 20px;
+}
+.author_full_info {
+  font-size: 90%;
+  margin: 0 auto;
+  color: grey;
+}
+.topic_content {
+  margin: 20px;
+  font-size: 110%;
+}
