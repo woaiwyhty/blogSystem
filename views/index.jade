@@ -43,7 +43,7 @@ html(lang='en')
               button.btn.btn-info.topic_type
                 | [Thread]
                 span.label.label-info #{i + 1}
-              a.topic_title(href='/thread/tid=#{topic.tid}', target='_blank')  #{topic.title}
+              a.topic_title(href='/thread/?&tid=#{topic.tid}', target='_blank')  #{topic.title}
             h6.col-sm-4
               a.author_name(href='#', target='_blank') #{topic.authorName}
               p #{topic.date}

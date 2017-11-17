@@ -21,7 +21,7 @@ var Thread = {
     getThreadByIdNumber: function(idNumber, callback) {
         model.findOne({ idNumber: idNumber }).populate([
             { path: 'belongUserId', select: 'username idNumber'},
-            { path: 'belongSectionId', select: 'name threadCount'}
+            { path: 'belongSectionId', select: 'name threadCount idNumber'}
             ]).exec(callback);
     },
     searchByTitle: function(title, callback) {
@@ -34,7 +34,7 @@ var Thread = {
         model.find({ belongSectionId: id }).populate(
             [
                 { path: 'belongUserId', select: 'username idNumber'},
-                { path: 'belongSectionId', select: 'name threadCount'}
+                { path: 'belongSectionId', select: 'name threadCount idNumber'}
             ]
             ).exec(callback);
     }

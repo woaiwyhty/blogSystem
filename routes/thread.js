@@ -28,10 +28,31 @@ router.get('/', function(req, res, next) {
             sectionName: doc.belongSectionId.name,
             sectionId: doc.belongSectionId.idNumber
         };
-        res.render('thread', {
-            isLogin: req.session.user != null,
-            thread: { title: info.threadTitle, date: info.threadDate, author: info.userName, content: info.threadContent}
+        var secList = [];
+        Section.getAllSections(function(err, doc) {
+            if(err) return next();
+            var secList = [], activePage, topicList = [];
+            for(var i in doc) {
+                var obj = {
+                    name: doc[i].name,
+                    count: doc[i].threadCount,
+                    id:  doc[i].idNumber
+                };
+                secList.push(obj);
+            }
+            res.render('thread', {
+                isLogin: req.session.user != null,
+                thread: {
+                    title: info.threadTitle,
+                    date: info.threadDate,
+                    author: info.userName,
+                    content: info.threadContent
+                },
+                sectionList: secList,
+                activePage: info.sectionId
+            });
         });
+
         //res.send({ retCode: 0, res: info });
     });
 });
