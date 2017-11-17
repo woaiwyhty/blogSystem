@@ -28,7 +28,11 @@ router.get('/', function(req, res, next) {
             sectionName: doc.belongSectionId.name,
             sectionId: doc.belongSectionId.idNumber
         };
-        res.send({ retCode: 0, res: info });
+        res.render('thread', {
+            isLogin: req.session.user != null,
+            thread: { title: info.threadTitle, date: info.threadDate, author: info.userName, content: info.threadContent}
+        });
+        //res.send({ retCode: 0, res: info });
     });
 });
 
