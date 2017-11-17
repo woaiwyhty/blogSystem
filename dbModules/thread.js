@@ -37,6 +37,15 @@ var Thread = {
                 { path: 'belongSectionId', select: 'name threadCount idNumber'}
             ]
             ).exec(callback);
+    },
+    getThreadsBySectionIDAndPage: function(id, pageNumber, callback) {
+        // add pagination
+        model.find({ belongSectionId: id }).skip(10 * (pageNumber - 1)).limit(10).populate(
+            [
+                { path: 'belongUserId', select: 'username idNumber'},
+                { path: 'belongSectionId', select: 'name threadCount idNumber'}
+            ]
+        ).exec(callback);
     }
 };
 
