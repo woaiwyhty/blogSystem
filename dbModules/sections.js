@@ -20,6 +20,10 @@ var Section = {
     },
     idNumberInc: function(callback) {
         ids.findOneAndUpdate({name: 'sections'}, {$inc: {idNumber: 1}}, {new: true}, callback);
+    },
+    getSectionAndIncByIdNumber: function(idNumber, callback) {
+        //get this section information and increment 1 to threadCount
+        model.findOneAndUpdate({ idNumber: idNumber }, {$inc: {threadCount: 1}}, callback);
     }
 };
 
