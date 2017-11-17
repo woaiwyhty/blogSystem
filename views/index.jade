@@ -20,7 +20,7 @@ html(lang='en')
           ul.navbar-nav.mr-auto
             if sectionList != null
               each section, i in sectionList
-                if section.id == activePage
+                if section.id == activeSec
                   li.nav-item.active
                     a.nav-link(href='/?&sid=#{section.id}', id='#{section.id}') #{section.name}
                 else
@@ -50,13 +50,11 @@ html(lang='en')
 
       nav(aria-label='Page navigation')
         ul.pagination
-          li.page-item
-            a.page-link(href='#') Previous
-          li.page-item
-            a.page-link(href='#') 1
-          li.page-item
-            a.page-link(href='#') 2
-          li.page-item
-            a.page-link(href='#') 3
-          li.page-item
-            a.page-link(href='#') Next
+          - var i = 1;
+          while i <= totalPage
+            if i == activePage
+              li.page-item.active
+                a.page-link(href='/?&sid=#{activeSec}&page=#{i}') #{i++}
+            else
+              li.page-item
+                a.page-link(href='/?&sid=#{activeSec}&page=#{i}') #{i++}

@@ -11,10 +11,10 @@ router.get('/', function(req, res, next) {
     if(req.session.user) {
         login = true;
     }
-    var sid = req.query.sid || null;
+    var sid = req.query.sid || null, pid = req.query.page || null;
     Section.getAllSections(function(err, doc) {
         if(err) return next();
-        var secList = [], activePage, topicList = [];
+        var secList = [], activeSec, topicList = [], activePage, totalPage;
         for(var i in doc) {
             var obj = {
                 name: doc[i].name,
@@ -24,11 +24,14 @@ router.get('/', function(req, res, next) {
             secList.push(obj);
         }
         if(doc != null) {
-            activePage = sid != null ? parseInt(sid) : secList[0].id;
+            activeSec = sid != null ? parseInt(sid) : secList[0].id;
         }
-        Section.getSectionByIdNumber(activePage, function(err, doc) {
+        activePage = pid != null ? parseInt(pid) : 1;
+        Section.getSectionByIdNumber(activeSec, function(err, doc) {
             if(err)  return next();
-            Thread.getThreadsBySectionID(doc._id, function(err, doc) {
+            var cnt = parseInt(doc.threadCount);
+            totalPage = cnt / 10 + (cnt % 10 == 0 ? 0 : 1);
+            Thread.getThreadsBySectionIDAndPage(doc._id, activePage, function(err, doc) {
                 if(err) return next();
                 for(var i in doc) {
                     var dt = doc[i].threadDate;
@@ -44,7 +47,9 @@ router.get('/', function(req, res, next) {
                     isLogin: login,
                     topicList: topicList,
                     sectionList: secList,
-                    activePage: activePage
+                    activeSec: activeSec,
+                    activePage: activePage,
+                    totalPage: totalPage
                 });
             });
         });
@@ -52,17 +57,17 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.get('/addTopic', function(req, res, next) {
+router.post('/addTopic', function(req, res, next) {
     var info = {
-        threadTitle: 'Hello MATH117',
-        threadContent: 'ohhhhhhhhhhhhh',
+        threadTitle: req.body.title,
+        threadContent: req.body.content,
         threadDate: new Date(),
         belongUserId: null,
         belongSectionId: null,
         userName: 'woaiwyhty',
         idNumber: null
     };
-    Section.getSectionByIdNumber('2', function(err, doc) {
+    Section.getSectionAndIncByIdNumber(req.body.secid.toString(), function(err, doc) {
         if(err) return next();
         info.belongSectionId = doc._id;
         User.getUserNameByName('woaiwyhty', function(err, doc) {
@@ -76,8 +81,20 @@ router.get('/addTopic', function(req, res, next) {
                 })
             });
         })
-    });});
-
+    });
+});
+router.get('/addSection', function(req, res, next) {
+    Section.idNumberInc(function(err, doc) {
+        Section.addSection({
+            idNumber: doc.idNumber,
+            name: req.query.name,
+            threadCount: 0
+        }, function(err, doc) {
+            if(err) return next();
+            res.send({ retCode: 0 });
+        })
+    })
+});
 
 function ensureAuthenticated(req, res, next){
     if(req.session.user){
