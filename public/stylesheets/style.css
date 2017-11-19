@@ -40,3 +40,12 @@ a {
   margin: 20px;
   font-size: 110%;
 }
+.new_topic_content {
+  margin-top: 15px;
+}
+.new_topic_title {
+  margin-top: 15px;
+}
+.new_topic_submit {
+  margin-top: 10px;
+}
