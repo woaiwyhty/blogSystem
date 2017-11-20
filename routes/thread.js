@@ -71,6 +71,7 @@ router.post('/', ensureAuthenticated, function(req, res, next) {
     };
     Section.getSectionByIdNumber(req.body.sectionID, function(err, doc) {
         if(err) return next();
+        if(doc == null) return next();
         info.belongSectionId = doc._id;
         User.getUserNameByName(req.session.user.username, function(err, doc) {
             if(err) return next();
@@ -86,4 +87,27 @@ router.post('/', ensureAuthenticated, function(req, res, next) {
     });
 });
 
+router.get('/create', ensureAuthenticated, function(req, res, next) {
+    var secList = [];
+    Section.getAllSections(function(err, doc) {
+        if(err) return next();
+        var secList = [], activeSec = req.query.secid;
+        var exist = false;
+        for(var i in doc) {
+            var obj = {
+                name: doc[i].name,
+                count: doc[i].threadCount,
+                id:  doc[i].idNumber
+            };
+            if(obj.id == activeSec) exist = true;
+            secList.push(obj);
+        }
+        if(!exist) return next();
+        res.render('newtopic', {
+            isLogin: true,
+            sectionList: secList,
+            activeSec: activeSec
+        });
+    });
+});
 module.exports = router;

@@ -14,7 +14,7 @@ a {
 }
 
 .topic_list {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 .topic_type {
   font-size: 10px;
@@ -48,4 +48,7 @@ a {
 }
 .new_topic_submit {
   margin-top: 10px;
+}
+.new_topic_page {
+  margin-top: 15px;
 }

@@ -5,7 +5,6 @@ $(document).ready(function () {
     $('#SignIn').click(function(){
 
     });
-
     $('#SignUp').click(function() {
         window.location.href = '/register'
     });
