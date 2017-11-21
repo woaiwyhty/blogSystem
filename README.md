@@ -15,3 +15,7 @@ retCode meanings:
 6. [POST] [section] [{sectionName: name}] -> add a new section(only admin user can use this api)
 7. [GET] [thread] [id=threadID] [{threadTitle,,threadContent,threadDate,userName,sectionName,sectionId}]
 8. [POST] [thread] [{title: t, content: balabalabala, sectionID: balabalabala}]
+
+Configuration:
+Just need to add a collection called ids, and then add three items (name, idNumber) as follows to the collection:
+{ name: "users", idNumber: 0 }, { name: "sections", idNumber: 0 },{ name: "threads", idNumber: 0 }
