@@ -1,0 +1,32 @@
+//
+   Created by dell on 2017/11/21.
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+        script(src='../javascripts/jquery-3.2.1.min.js')
+        script(src='../javascripts/bootstrap.min.js')
+        script(src='../javascripts/eventHandlers.js')
+        link(rel='stylesheet', href='../stylesheets/bootstrap.min.css')
+        link(rel='stylesheet', href='../stylesheets/style.css')
+        title Sign in
+    body
+        #login.container
+            form(action='/login', method='post', name='loginForm', class='form_login')
+                div(id='login title')
+                    h3 Sign in to Dashboard
+                table.table.col-sm-12
+                    tr
+                        td
+                            .col-sm-12
+                                input.form-control(type='text', placeholder='Enter User Name', name='username', required='')
+                    tr
+                        td
+                            .col-sm-12
+                                input.form-control(type='password', placeholder='Enter password', name='password', required='')
+                    tr
+                        td
+                            .row
+                                .col-sm-6
+                                    button.btn.btn-primary.btn-lg.btn-block(type='submit', id='SignIn') Sign In
