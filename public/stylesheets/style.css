@@ -95,3 +95,9 @@ h1.title {
   margin-bottom: 20px;
   border-bottom: 1px solid #eee;
 }
+.section_list {
+  margin-top: 20px;
+}
+.section_tools {
+  margin-left: 10px;
+}

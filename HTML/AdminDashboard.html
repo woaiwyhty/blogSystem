@@ -36,7 +36,7 @@
 </div>
 <div class="container-fluid">
     <div class="row">
-        <nav class="col-sm-3 col-md-2 d-none d-sm-block sidebar bg-light" style="background-color: wheat">
+        <nav class="col-sm-3 col-md-2 d-none d-sm-block sidebar bg-light">
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
                     <a class="nav-link active" href="#">Sections</a>
@@ -49,22 +49,41 @@
                 </li>
             </ul>
         </nav>
-        <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
-            <button class="btn-info btn">Add a section</button>
-            <div class="table-responsive">
-                <table id="example" class="display" cellspacing="0" width="100%">
+        <div role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3" style="background-color: white;">
+            <div class="section_tools">
+                <button class="btn-info btn ">Add a section</button>
+                <button class="btn-info btn">Delete selected rows</button>
+            </div>
+            <div class="table-responsive section_list">
+                <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                     <tr>
                         <th>#</th>
                         <th>Name</th>
                         <th>Topic Numbers</th>
-                        <th>Header</th>
-                        <th>Header</th>
                     </tr>
                     </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>ECE150</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>ECE150</td>
+                        <td>100</td>
+                    </tr>
+                    <tr >
+                        <td>3</td>
+                        <td>ECE150</td>
+                        <td>100</td>
+                    </tr>
+
+                    </tbody>
                 </table>
             </div>
-        </main>
+        </div>
 
     </div>
 </div>

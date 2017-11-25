@@ -11,6 +11,15 @@ $(document).ready(function () {
         }
     })(jQuery);
     $(document).ready(function() {
-        $('#example').DataTable();
+        var sectionList = $('#example').DataTable();
+        $('#example tbody').on( 'click', 'tr', function () {
+            if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+            }
+            else {
+                //sectionList.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+        } );
     } );
 });
