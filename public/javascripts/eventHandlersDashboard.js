@@ -10,16 +10,26 @@ $(document).ready(function () {
             return null;
         }
     })(jQuery);
-    $(document).ready(function() {
-        var sectionList = $('#example').DataTable();
-        $('#example tbody').on( 'click', 'tr', function () {
-            if ( $(this).hasClass('selected') ) {
-                $(this).removeClass('selected');
-            }
-            else {
-                //sectionList.$('tr.selected').removeClass('selected');
-                $(this).addClass('selected');
-            }
-        } );
+    var sectionList = $('#example').DataTable();
+    $('#example,#userTable,#adminTable tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            //sectionList.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
     } );
+    var userList = $('#userTable').DataTable(), adminList = $('#adminTable').DataTable();
+    $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
+        if($(this).hasClass('admin')) {
+            $('#tab-table-admin').show();
+            $('#tab-table-user').hide();
+        } else if($(this).hasClass('user')) {
+            $('#tab-table-admin').hide();
+            $('#tab-table-user').show();
+        }
+    } );
+    $('#tab-table-admin').hide();
+
 });
