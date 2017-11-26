@@ -1,0 +1,57 @@
+//
+   Created by dell on 2017/11/26.
+
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+        script(src='../javascripts/jquery-3.2.1.min.js')
+        script(src='../javascripts/popper.js')
+        script(src='../javascripts/bootstrap.min.js')
+        link(rel='stylesheet', href='../stylesheets/bootstrap.min.css')
+        link(rel='stylesheet', href='../stylesheets/style.css')
+        link(rel='stylesheet', type='text/css', href='../DataTables/datatables.min.css')
+        script(type='text/javascript', src='../DataTables/datatables.min.js')
+        script(type='text/javascript', src='../javascripts/eventHandlersDashboard.js')
+        title GeeksUnknown Dashboard
+    body
+        .container-fluid
+            nav.navbar.navbar-expand-sm.navbar-dark.fixed-top
+                a.navbar-brand(href='#') GeeksUnknown
+                button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExample03', aria-controls='navbarsExample03', aria-expanded='false', aria-label='Toggle navigation')
+                    span.navbar-toggler-icon
+                #navbarsExample03.collapse.navbar-collapse
+                    ul.navbar-nav.mr-auto
+                    ul.navbar-nav
+                        li.nav-item
+                            a.nav-link(href='/logout') Log out
+        .container-fluid
+            .row
+                nav.col-sm-3.col-md-2.d-none.d-sm-block.sidebar.bg-light
+                    ul.nav.nav-pills.flex-column
+                        li.nav-item
+                            a.nav-link.active(href='/section') Sections
+                        li.nav-item
+                            a.nav-link(href='/user') Usesr
+                        li.nav-item
+                            a.nav-link(href='#') About
+                .col-sm-9.ml-sm-auto.col-md-10.pt-3(role='main', style='background-color: white;')
+                    .section_tools
+                        button.btn-info.btn.addSection Add a section
+                        button.btn-info.btn.deleteSection Delete selected rows
+                    .table-responsive.section_list
+                        table#example.table.table-striped.table-bordered(cellspacing='0', width='100%')
+                            thead
+                                tr
+                                    th #
+                                    th Name
+                                    th Topic Numbers
+                            tbody
+                                if sectionList != null
+                                    each section, i in sectionList
+                                        tr
+                                            td #{i}
+                                            td #{section.name}
+                                            td #{section.count}
