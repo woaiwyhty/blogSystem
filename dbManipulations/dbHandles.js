@@ -28,5 +28,9 @@ module.exports = {
     ids: {
         name: {type: String, required: true, unique: true},
         idNumber: {type: Number, required: true}
+    },
+    adminusers: {
+        username: {type: String, required: true, index: 1, unique: true},
+        password: {type: String, required: true}
     }
 };
