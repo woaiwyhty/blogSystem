@@ -13,7 +13,7 @@ html(lang='en')
         title Sign in
     body
         #login.container
-            form(action='/login', method='post', name='loginForm', class='form_login')
+            form(action='/db/login', method='post', name='loginForm', class='form_login')
                 div(id='login title')
                     h3 Sign in to Dashboard
                 table.table.col-sm-12
@@ -28,5 +28,6 @@ html(lang='en')
                     tr
                         td
                             .row
+                                .col-sm-3
                                 .col-sm-6
                                     button.btn.btn-primary.btn-lg.btn-block(type='submit', id='SignIn') Sign In
