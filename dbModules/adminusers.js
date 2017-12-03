@@ -16,6 +16,13 @@ var AdminUser = {
     },
     addUser: function(info, callback) {
         userModel.create(info, callback);
+    },
+    getAllUsers: function(pageNumber, callback) {
+        userModel.find({}).skip(10 * (pageNumber - 1)).limit(10).exec(callback);
+    },
+    getCount: function(callback) {
+        userModel.count({}, callback);
     }
+
 };
 module.exports = AdminUser;

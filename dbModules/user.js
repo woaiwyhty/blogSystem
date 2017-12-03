@@ -16,7 +16,7 @@ var User = {
         userModel.findOne({id: id}, callback);
     },
     getAllUsers: function(pageNumber, callback) {
-        userModel.find({}).skip(10 * (pageNumber - 1)).limit(10).execute(callback);
+        userModel.find({}).skip(10 * (pageNumber - 1)).limit(10).exec(callback);
     },
     removeUserByName: function(username, callback) {
         userModel.remove({ username: username}, callback);
@@ -26,6 +26,9 @@ var User = {
     },
     idNumberInc: function(callback) {
         ids.findOneAndUpdate({name: 'users'}, {$inc: {idNumber: 1}}, {new: true}, callback);
+    },
+    getCount: function(callback) {
+        userModel.count({}, callback);
     }
 };
 
