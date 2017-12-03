@@ -20,7 +20,33 @@ $(document).ready(function () {
             $(this).addClass('selected');
         }
     } );
-    var userList = $('#userTable').DataTable(), adminList = $('#adminTable').DataTable();
+    var userList = $('#userTable').DataTable({
+        "lengthMenu": [[10], [10]],
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+            "url": "/db/user",
+            "type": "POST"
+        },
+        "columns": [
+            { "data": "idNumber" },
+            { "data": "username" },
+            { "data": "password" }
+        ]
+    }), adminList = $('#adminTable').DataTable({
+        "lengthMenu": [[10], [10]],
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+            "url": "/db/user/admin",
+            "type": "POST"
+        },
+        "columns": [
+            { "data": "idNumber" },
+            { "data": "username" },
+            { "data": "password" }
+        ]
+    });
     $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
         if($(this).hasClass('admin')) {
             $('#tab-table-admin').show();

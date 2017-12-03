@@ -20,6 +20,7 @@ var register = require('./routes/reg');
 var thread = require('./routes/thread');
 var section = require('./routes/section');
 var dashboard = require('./routes/dashboard');
+var dashboard_user = require('./routes/dashboard_user');
 var app = express();
 
 // view engine setup
@@ -85,6 +86,7 @@ app.use('/register', register);
 app.use('/section', section);
 app.use('/thread', thread);
 app.use('/db', dashboard);
+app.use('/db/user', dashboard_user);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
