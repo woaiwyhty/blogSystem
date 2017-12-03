@@ -16,6 +16,13 @@ retCode meanings:
 7. [GET] [thread] [id=threadID] [{threadTitle,,threadContent,threadDate,userName,sectionName,sectionId}]
 8. [POST] [thread] [{title: t, content: balabalabala, sectionID: balabalabala}]
 
+dashboard APIs:
+1. [GET] [db/login] [No Parameter]
+2. [POST] [db/login] [{username: u, password: p}]
+3. [POST] [db/user] [ {draw: page number}]
+4. [POST] [db/user/admin] [ {draw: page number}]
+5. [GET] [db/logout] [No Parameter]
+
 Configuration:
 Just need to add a collection called ids, and then add three items (name, idNumber) as follows to the collection:
 { name: "users", idNumber: 0 }, { name: "sections", idNumber: 0 },{ name: "threads", idNumber: 0 }
