@@ -15,14 +15,8 @@ var User = {
     getUserIDbyID: function(id, callback) {
         userModel.findOne({id: id}, callback);
     },
-    getAllUsers: function(roles, callback) {
-        var queryStr;
-        if(typeof(roles) == undefined) queryStr = {};
-        else {
-            queryStr = { role : { $gte : roles}};
-        }
-        userModel.find(queryStr, callback);
-        //userModel.find(queryStr).populate('departmentId', 'name', null).exec(callback);
+    getAllUsers: function(pageNumber, callback) {
+        userModel.find({}).skip(10 * (pageNumber - 1)).limit(10).execute(callback);
     },
     removeUserByName: function(username, callback) {
         userModel.remove({ username: username}, callback);
