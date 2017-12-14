@@ -48,7 +48,7 @@ router.get('/threadList', function(req, res, next) {
 });
 
 function ensureAdministrator(req, res, next) {
-    if(req.session.admin) {
+    if(req.session.adminuser) {
         return next();
     }
     res.status(404);

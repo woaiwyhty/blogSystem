@@ -6,7 +6,7 @@ $(document).ready(function () {
         $.getUrlParam = function (name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
             var r = window.location.search.substr(1).match(reg);
-            if (r != null) return decodeURI(r[2]);
+            if (r !== null) return decodeURI(r[2]);
             return null;
         }
     })(jQuery);
@@ -22,7 +22,7 @@ $(document).ready(function () {
             sectionID: sid
         };
         $.post('/thread', postBody, function(res) {
-            if(res.retCode == 0) {
+            if(res.retCode === 0) {
                 window.location.href = '../../?&sid=' + sid;
             }
         });

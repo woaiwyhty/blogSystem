@@ -57,5 +57,26 @@ $(document).ready(function () {
         }
     } );
     $('#tab-table-admin').hide();
+    $('button.addSection').click(function () {
+        $('#addSectionModal').modal()
+    });
+    $('button.submitAddSection').click(function () {
+        var secName = $('input.sectionName');
+        var str = secName.val();
+        if(str === undefined || str.length <= 4) {
+            alert("Please enter a valid section name");
+            secName.val("");
+            return 0;
+        }
+        $.post('/section', {
+            sectionName: str
+        }, function(res) {
+            if(res.retCode === 0) {
 
+            } else {
+                alert('failed to add a section!');
+            }
+            window.location.reload();
+        })
+    });
 });

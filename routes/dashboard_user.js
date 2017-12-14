@@ -27,7 +27,7 @@ router.get('/', ensureAuthenticated, function(req, res, next) {
 
 router.post('/', ensureAuthenticated, function(req, res, next) {
     //console.log(req.body);
-    if(req.body.draw == null) return next();
+    if(req.body.draw === null) return next();
     User.getAllUsers(parseInt(req.body.draw), function(err, doc) {
         if(err) return next();
         var data = [], resData = {
@@ -56,7 +56,7 @@ router.post('/', ensureAuthenticated, function(req, res, next) {
 });
 
 router.post('/admin', ensureAuthenticated, function(req, res, next) {
-    if(req.body.draw == null) return next();
+    if(req.body.draw === null) return next();
     AdminUser.getAllUsers(parseInt(req.body.draw), function(err, doc) {
         if(err) return next();
         var data = [], resData = {
