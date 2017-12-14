@@ -57,6 +57,16 @@ $(document).ready(function () {
         }
     } );
     $('#tab-table-admin').hide();
+    var Common = {
+        confirm:function(params){
+            var model = $("#common_confirm_model");
+            model.find(".title").html(params.title);
+            model.find(".message").html(params.message);
+
+            $("#common_confirm_btn").click();
+
+        }
+    }
     $('button.addSection').click(function () {
         $('#addSectionModal').modal()
     });
@@ -66,17 +76,49 @@ $(document).ready(function () {
         if(str === undefined || str.length <= 4) {
             alert("Please enter a valid section name");
             secName.val("");
-            return 0;
+            return;
         }
-        $.post('/section', {
-            sectionName: str
-        }, function(res) {
-            if(res.retCode === 0) {
+        setTimeout(function() {
+            $.post('/section', {
+                sectionName: str
+            }, function(res) {
+                if(res.retCode === 0) {
 
-            } else {
-                alert('failed to add a section!');
+                } else {
+                    alert('failed to add a section!');
+                }
+                window.location.reload();
+            })
+        }, 500);
+
+    });
+    $('button.deleteSection').click(function () {
+        var dtArr = sectionList.rows('.selected').data();
+        if(dtArr.length === 0) {
+            alert('Please select at least one section!');
+            return;
+        }
+
+        Common.confirm({
+            title: "Alert",
+            message: "Do you want to continue to delete those sections?"
+        });
+    });
+    $('button.continue').click(function() {
+        var dtArr = sectionList.rows('.selected').data();
+        var idArr = [];
+        for(var i = 0; i< dtArr.length; ++i) {
+            idArr.push(dtArr[i][0]);
+        }
+        $.ajax({
+            url: '/section',
+            type: 'DELETE',
+            data: { idNumber: idArr }
+        }, function(res) {
+            if(res.retCode !== 0) {
+                alert('failed to remove those sections');
             }
             window.location.reload();
-        })
-    });
+        });
+    })
 });

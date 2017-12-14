@@ -35,21 +35,43 @@
     </nav>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="addSectionModal" tabindex="-1" role="dialog" aria-labelledby="addSectionModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addSectionModalLabel">Add a section</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+<div class="add_section_container">
+    <div class="modal fade" id="addSectionModal" tabindex="-1" role="dialog" aria-labelledby="addSectionModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addSectionModalLabel">Add a section</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input placeholder="Enter a section name" class="form-control sectionName">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-info submitAddSection">Submit</button>
+                </div>
             </div>
-            <div class="modal-body">
-                <input placeholder="Enter a section name" class="form-control sectionName">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info submitAddSection">Submit</button>
+        </div>
+    </div>
+</div>
+<div class="delete_section_container">
+    <input type="hidden" id="common_confirm_btn" class="btn btn-primary" data-toggle="modal" data-target="#common_confirm_model">
+    <div id="common_confirm_model" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> <span class="title"></span></h5>
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                </div>
+                <div class="modal-body">
+                    <p ><span class="message"></span></p>
+                </div>
+                <div class="modal-footer" >
+                    <button type="button" class="btn btn-primary continue" data-dismiss="modal">Continue</button>
+                    <button type="button" class="btn btn-default cancel" data-dismiss="modal">Cancel</button>
+                </div>
             </div>
         </div>
     </div>
