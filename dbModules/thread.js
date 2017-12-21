@@ -46,6 +46,12 @@ var Thread = {
                 { path: 'belongSectionId', select: 'name threadCount idNumber'}
             ]
         ).exec(callback);
+    },
+    removeAllThreadsByUser: function(userId, callback) {
+        model.find({ belongUserId: userId }, callback);
+    },
+    removeAllThreadsBySection: function(secId, callback) {
+        model.find({ belongSectionId: secId }, callback);
     }
 };
 

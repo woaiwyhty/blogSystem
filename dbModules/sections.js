@@ -24,6 +24,9 @@ var Section = {
     getSectionAndIncByIdNumber: function(idNumber, callback) {
         //get this section information and increment 1 to threadCount
         model.findOneAndUpdate({ idNumber: idNumber }, {$inc: {threadCount: 1}}, callback);
+    },
+    removeSectionByIdNumber: function(idNumber, callback) {
+        model.remove({ idNumber: idNumber }, callback);
     }
 };
 

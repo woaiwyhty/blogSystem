@@ -29,6 +29,9 @@ var User = {
     },
     getCount: function(callback) {
         userModel.count({}, callback);
+    },
+    removeUserByIdNumber: function(idNumber, callback) {
+        userModel.remove( { idNumber: idNumber }, callback);
     }
 };
 
