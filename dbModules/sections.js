@@ -26,7 +26,13 @@ var Section = {
         model.findOneAndUpdate({ idNumber: idNumber }, {$inc: {threadCount: 1}}, callback);
     },
     removeSectionByIdNumber: function(idNumber, callback) {
-        model.remove({ idNumber: idNumber }, callback);
+        model.removeOne({ idNumber: idNumber }, callback);
+    },
+    removeSectionsByIdNumbers: function(ids, callback) {
+        model.remove({ idNumber: { $in: ids } }, callback);
+    },
+    getIDByIdNumbers: function(ids, callback) {
+        model.find({ idNumber: { $in: ids } }, '_id', callback);
     }
 };
 

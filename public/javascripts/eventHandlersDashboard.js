@@ -111,14 +111,16 @@ $(document).ready(function () {
             idArr.push(dtArr[i][0]);
         }
         $.ajax({
-            url: '/section',
-            type: 'DELETE',
-            data: { idNumber: idArr }
-        }, function(res) {
-            if(res.retCode !== 0) {
-                alert('failed to remove those sections');
+            url:'/section/remove',
+            type: 'post',
+            traditional: true,
+            data: { idNumber: idArr },
+            success: function(res) {
+                if(res.retCode !== 0) {
+                    alert('failed to remove those sections');
+                }
+                window.location.reload();
             }
-            window.location.reload();
         });
     })
 });

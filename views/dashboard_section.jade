@@ -39,6 +39,23 @@ html(lang='en')
                     .modal-footer
                         button.btn.btn-secondary(type='button', data-dismiss='modal') Close
                         button.btn.btn-info.submitAddSection(type='button') Submit
+        .delete_section_container
+            input#common_confirm_btn.btn.btn-primary(type='hidden', data-toggle='modal', data-target='#common_confirm_model')
+            #common_confirm_model.modal
+                .modal-dialog
+                    .modal-content
+                        .modal-header
+                            h5.modal-title
+                                span.title
+                            button.close(type='button', data-dismiss='modal')
+                                span(aria-hidden='true') ×
+                                span.sr-only Close
+                        .modal-body
+                            p
+                                span.message
+                        .modal-footer
+                            button.btn.btn-primary.continue(type='button', data-dismiss='modal') Continue
+                            button.btn.btn-default.cancel(type='button', data-dismiss='modal') Cancel
 
         .container-fluid
             .row
@@ -65,6 +82,6 @@ html(lang='en')
                                 if sectionList != null
                                     each section, i in sectionList
                                         tr
-                                            td #{i}
+                                            td #{section.id}
                                             td #{section.name}
                                             td #{section.count}

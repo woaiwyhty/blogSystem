@@ -51,7 +51,10 @@ var Thread = {
         model.find({ belongUserId: userId }, callback);
     },
     removeAllThreadsBySection: function(secId, callback) {
-        model.find({ belongSectionId: secId }, callback);
+        model.removeOne({ belongSectionId: secId }, callback);
+    },
+    removeAllThreadsBySections: function(secIds, callback) {
+        model.remove({ belongSectionId: { $in: secIds } }, callback);
     }
 };
 

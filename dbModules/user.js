@@ -31,7 +31,7 @@ var User = {
         userModel.count({}, callback);
     },
     removeUserByIdNumber: function(idNumber, callback) {
-        userModel.remove( { idNumber: idNumber }, callback);
+        userModel.removeOne( { idNumber: idNumber }, callback);
     }
 };
 

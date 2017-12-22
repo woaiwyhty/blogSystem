@@ -36,10 +36,10 @@ router.get('/', ensureAuthenticated, function(req, res, next) {
             };
             secList.push(obj);
         }
-        if(doc != null) {
-            activeSec = sid != null ? parseInt(sid) : secList[0].id;
+        if(doc !== null) {
+            activeSec = sid !== null ? parseInt(sid) : secList[0].id;
         }
-        activePage = pid != null ? parseInt(pid) : 1;
+        activePage = pid !== null ? parseInt(pid) : 1;
         res.render('dashboard_section', {
             sectionList: secList
         })

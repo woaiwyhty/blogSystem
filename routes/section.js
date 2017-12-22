@@ -24,9 +24,30 @@ router.get('/', function(req, res, next) {
         res.send({ retCode: 0, resArr: infoArr });
     })
 });
+router.post('/remove', function(req, res, next) {
+    var ids = req.body.idNumber, objIds = [];
+    if(ids === null || ids === undefined) return next();
+    Section.getIDByIdNumbers(ids, function(err, doc) {
+        if(err || !doc) return next();
+        for(var i in doc) {
+            objIds.push(doc[i]._id);
+            doc[i].remove();
+        }
+        Thread.removeAllThreadsBySections(objIds, function(err, doc) {
+            if(err) return next();
+            res.send({ retCode: 0 });
+        });
+    });
+    Section.removeSectionsByIdNumbers(ids, function(err, doc) {
+        if(err || !doc) return next();
+        var objId = doc._id;
+        console.log(doc);
+
+    })
+});
 router.get('/threadList', function(req, res, next) {
     var secID = req.query.sid || null;
-    if(secID == null) return next();
+    if(secID === null) return next();
     Section.getSectionByIdNumber(secID, function(err, doc) {
         if(err) return next();
         Thread.getThreadsBySectionID(doc._id, function(err, doc) {

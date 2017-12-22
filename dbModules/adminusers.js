@@ -9,7 +9,7 @@ var AdminUser = {
         userModel.findOne({username: username}, callback);
     },
     comparePassword: function(pwd, pwd1) {
-        return pwd == pwd1;
+        return pwd === pwd1;
     },
     getUserIDbyID: function(id, callback) {
         userModel.findOne({id: id}, callback);
